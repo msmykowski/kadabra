@@ -17,6 +17,7 @@ defmodule Kadabra.Hpack do
   end
 
   def encode(ref, headers) do
+    ref = :erlang.make_ref()
     GenServer.call(via_tuple(ref, :encoder), {:encode, headers})
   end
 
